@@ -9,7 +9,7 @@ output:
     toc_float: true  
 ---
 <!-- Learned how to make a chunk of text a comment in R: Code > Comment/Uncomment Lines. It doesn't show up in the Knit version. Just wanted to share w/ you :) - Julianna -->
-<!-- I also used the same theme!!  -->
+<!-- I also used the Cerulean theme!!  -->
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -57,7 +57,7 @@ if (is_not_null(p2) && p2*n2 <5 || n1(1-p2)<5) {
      print("Warning: Test violates assumptions.")
 }
 ```
-
+<!-- This HW problem was certainly challenging. I appreciate your commentary, it helps me follow your train of thought and better understand your code. I realized that you used the correct formula (the p-hat formula), whereas I used Z. I overlooked the fact that the question was asking for the Z-test to perform on PROPORTIONS. Thanks for helping me catch that. Unfortunately, I don't really have any solutions or suggestions to address the errors you ran into because I did mine differently/wrong. - Julianna  -->
 
 # Question 2
 The dataset from Kamilar and Cooper has in it a large number of variables related to life history and body size. For this exercise, the end aim is to fit a simple linear regression model to predict longevity (MaxLongevity_m) measured in months from species’ brain size (Brain_Size_Species_Mean) measured in grams. 
@@ -88,6 +88,7 @@ eq<-"y=1.22x+248.95"
 lbmplot<-lbmplot+annotate("text", x= 600, y= 400, label="y=1.22x+248.95") #geom_text didn't work so I used annotate #equation was written based on lm() results from previous chunk
 lbmplot
 ```
+<!-- I have the variables on opposite axes because we want to predict longevity (dependent variable, y-axis) based on brain size (x-axis). Nonetheless, your actual code looks correct to me. I used the same code - Julianna -->
 
 - Identify and interpret the point estimate of the slope (β1), as well as the outcome of the test associated with the hypotheses H0: β1 = 0; HA: β1 ≠ 0. Also, find a 90 percent CI for the slope (β1) parameter.
 
@@ -107,6 +108,8 @@ ci
 ```
 The 90% confidence interval of the slope is (1.03, 1.4). This means that there's a 90% confidence that the true slope is between 1.03 and 1.4.
 
+<!-- Great interpretations! - Julianna -->
+
 - Using your model, add lines for the 90 percent confidence and prediction interval bands on the plot and add a legend to differentiate between the lines
 
 ``{r eval=false}
@@ -125,6 +128,8 @@ if it did work, I would do the same for prediction using below equation:
 pinterval<-pi <- predict(lbmodel, newdata =kc, interval = "prediction",
     level = 0.90)
     
+<!-- I also had trouble with this. Great effort, here. Again, commentary is great - super helpful and easy to follow - Julianna -->
+    
 - Produce a point estimate and associated 90 percent PI for the longevity of a species whose brain weight is 800 gm. Do you trust the model to predict observations accurately for this value of the explanatory variable? Why or why not?
 
 Okay, we're going to use predict(), like for the intervals, but specify the size we want estimated.
@@ -133,6 +138,7 @@ cipoint <- predict(lbmodel, newdata = data.frame(Brain_Size_Species_Mean = 800),
 cipoint
 ```
 
+<!-- Nice job here. I used the same code. - Julianna -->
 I don't necessarily trust this estimate since the r-squared was only 0.49, so the brain size isn't that determinative of longevity by itself.
 
 ## Regression Model and interpretation log(longevity)~log(brain size)
@@ -187,6 +193,10 @@ loglbmplot
 
 I do think the log model looks better graphically because the relationship looks much clearer.
 
+<!-- I like that you used par(mfrow=c(1,2)) for an easy side-by-side comparison to help answer this question. - Julianna -->
+
 #Challenges
 -Well, the elephants in the room are that first question and trying to add the confidence and prediction intervals. I tried following the module a dozen different ways but the x argument in my geom_line just wouldn't work, it thinks it's not the right length for some reason, I tried defining it as the column from the data frame, extracting that column by itself as a data frame, adding it to an existing data frame, and nope. Also tried changing the name of the column, using quotes, all of that. 
 -Geom_text doesn't work for labelling for me, it creates a label for each point so it's repeating a bajillion times across the graph and ruining it. 
+
+<!-- Overall, great work on this HW code. Prof Schmitt did say it was going to be challenging, and there is no doubt that it was. Despite this, I can tell that you worked really hard on the code and made sure you understood both the code, itself, and what the output was. I'm sorry I couldn't offer many suggestions. I, too, struggled a lot with this HW and am going to need to do some Googling. I will reach out if I find anything that may be helfpul to you! - Julianna  -->
